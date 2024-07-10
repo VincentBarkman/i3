@@ -19,11 +19,26 @@ font pango:ttf jetbrains-mono 11
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
+# Start xidlehook to handle idle actions
+exec --no-startup-id xidlehook \
+  --not-when-fullscreen \
+  --not-when-audio \
+  --timer 60 ~/.config/i3/lock.sh ''
+
+# Start xss-lock to handle idle actions
+exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.config/i3/lock.sh
+
+
+bindsym XF86MonBrightnessDown exec --no-startup-id sudo brightnessctl set 10%-
+
+bindsym XF86MonBrightnessUp exec --no-startup-id sudo brightnessctl set +10%
+
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id picom --fade-in-step=1 --fade-out-step=1 &
 exec --no-startup-id dex --autostart --environment i3
 bindsym $mod+l exec --no-startup-id i3lock -c 000000
+exec --no-startup-id xrandr --output eDP-1 --mode 3072x1920 --rate 60
 
 
 bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
