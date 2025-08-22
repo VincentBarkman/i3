@@ -59,6 +59,8 @@ bindsym Mod4+l exec --no-startup-id i3lock -c 000000
 bindsym $mod+Shift+g exec firefox
 
 bindsym Shift+Mod4+s exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
+bindsym Shift+Mod1+s exec --no-startup-id \
+  bash -c 'mkdir -p ~/forest && maim --select ~/forest/screenshot_$(date +'%Y-%m-%d_%H-%M-%S').png && notify-send "Screenshot saved"'
 
 exec --no-startup-id goxlr-launcher
 
@@ -66,7 +68,7 @@ exec --no-startup-id goxlr-launcher
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $mod+d exec --no-startup-id dmenu_run -fn 'BigBlue Terminal 437TT'
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
