@@ -59,8 +59,6 @@ bindsym Mod4+l exec --no-startup-id i3lock -c 000000
 bindsym $mod+Shift+g exec firefox
 
 bindsym Shift+Mod4+s exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
-bindsym Shift+Mod1+s exec --no-startup-id \
-  bash -c 'mkdir -p ~/forest && maim --select ~/forest/screenshot_$(date +'%Y-%m-%d_%H-%M-%S').png && notify-send "Screenshot saved"'
 
 exec --no-startup-id goxlr-launcher
 
